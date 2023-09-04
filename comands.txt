@@ -6,5 +6,5 @@ run docker in comand prompt comands
 
 celery run comands
 
-to start the celery beat comand is >>> celery -A projectname beat -l INFO
-to start the celery worker comand is >>>  celery -A projectname.celery  worker --pool=solo -l info
+to start the celery beat comand is >>> celery -A celery_django beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
+to start the celery worker comand is >>> celery -A celery_django.celery worker --pool=solo -l info
