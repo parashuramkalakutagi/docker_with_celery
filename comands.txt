@@ -1,0 +1,10 @@
+run docker in comand prompt comands
+
+1 docker-compose build
+2 docker-compose up
+
+
+celery run comands
+
+to start the celery beat comand is >>> celery -A projectname beat -l INFO
+to start the celery worker comand is >>>  celery -A projectname.celery  worker --pool=solo -l info
