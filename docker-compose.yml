@@ -1,6 +1,8 @@
 version: '3.8'
 services:
 
+
+
   redis:
     image: redis:alpine
 
@@ -12,7 +14,9 @@ services:
       - 8000:8000
     image: app:django_rest
     container_name: rest_docker
-    command: python manage.py runserver 0.0.0.0:8000
+    command: gunicorn celery_django.wsgi --bind 0.0.0.0:8000
+    depends_on:
+      - redis
 
   celery:
     build: .
@@ -29,5 +33,17 @@ services:
       - .:/django_rest
     depends_on:
       - redis
+
+  nginx:
+    build: ./nginx
+    volumes:
+      - .:/django_rest
+    image: nginx
+    container_name: nginx_container
+    ports:
+      - 8001:8001
+    depends_on:
+      - app
+
 
 
