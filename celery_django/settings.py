@@ -146,8 +146,6 @@ CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 # celery_beat
 
 
-
-
 #EMAIL SETTINGS
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
